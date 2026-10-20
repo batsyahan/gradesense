@@ -1,0 +1,11 @@
+reference_answer,student_answer,label_name,pred
+A car is made of a lot of iron or steel.,That is because a car is made of metal and the magnet attract to metal.,partially_correct_incomplete,correct
+The motor will run.,The bulb will still light.,irrelevant,correct
+"Put acid on a rock. If the acid fizzes, Phil would know that the rock has calcite.",He would put vinegar on the rock get the strange then is quiet it and see if there is calcite.,partially_correct_incomplete,correct
+"When the string is tighter, the pitch will be higher.",It would of got higher.,correct,irrelevant
+The saxophone has the longest and fattest tube.,I think it makes a low sound because it has a little hole so the sound can get through.,contradictory,correct
+All variables except the girl need to be held constant (controlled). The girls all need to throw the same ball and use the same launch technique.,Have the ball the same.,partially_correct_incomplete,irrelevant
+"Yes, aluminum foil is a metal and all metals conduct. The aluminum foil would complete the circuit.","No, because it cannot attract electricity or get power.",contradictory,non_domain
+If the middle bulb burns out the other 2 bulbs will stay lit.,The other bulbs will burn out too.,contradictory,correct
+40 meters. The change in elevation is 20 meters between A and B and 20 meters between B and C. So the change between A and C is 40 meters. 20 m plus 20 m equals 40 m.,"B, Because it is between the A and C.",irrelevant,correct
+"The dissolved salt particles are small enough to go through the holes in the filter paper, but the sand particles are too large.",I think it is because the salt was small enough and the sand was too big for it. The salt had gone away dissolved. Sand particles was too big.,partially_correct_incomplete,correct

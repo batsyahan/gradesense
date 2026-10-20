@@ -1,0 +1,5 @@
+model,scheme,split,accuracy,macro_f1,weighted_f1
+DeBERTa-v3,5way,val,0.7565,0.7303,0.7567
+DeBERTa-v3,5way,test_ua,0.6926,0.539,0.6976
+DeBERTa-v3,5way,test_uq,0.5634,0.3952,0.5468
+DeBERTa-v3,5way,test_ud,0.5743,0.5958,0.5751

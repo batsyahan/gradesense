@@ -1,0 +1,11 @@
+reference_answer,student_answer,label_name,pred
+"When the string is tighter, the pitch will be higher.",The pitch will be lower.,contradictory,correct
+"If gas (carbon dioxide) is produced, the food contains acid. If no gas is produced, the food does not contain acid.",Well if it has a lot of volume it has sugar and if the syringe goes all the way up it has acid.,correct,contradictory
+"When the string is longer, the pitch will be lower.",Low.,correct,incorrect
+Elena should include a separate shelter for each lizard.,Add another shelter.,correct,incorrect
+In the morning the Sun is in the east so shadows point west. In the afternoon the Sun is in the west so shadows point east.,"The sun rises in the east and it sets in the west, so the school bus must be facing east so that is why.",incorrect,correct
+"When the string is tighter, the pitch will be higher.",If she did the pitch would be louder.,incorrect,correct
+"Jim would see a clear solution. 3 spoons of solid dissolves, so 2 spoons will dissolve.",Clear nothing on bottom because mixture 3 has clear and nothing on the bottom and it has 3 scoops.,correct,incorrect
+"No, Fruity cream cookies are not pure sugar. The cookies did not produce as much gas as was produced by the pure sugar.","No, because the Fruity Cream cookies is at 150 milliliters.",incorrect,contradictory
+A solution was created when the eggshells disappeared (dissolved) and the mixture ended up as a clear liquid.,She make a solution because she put eggshells into the cup and covered.,incorrect,contradictory
+"When the string is longer, the pitch will be lower.",It would be low pitch.,correct,incorrect

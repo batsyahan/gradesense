@@ -8,6 +8,7 @@ then open http://localhost:8000
 import logging
 import re
 import sys
+import threading
 from contextlib import asynccontextmanager
 from typing import Any, Dict, Optional
 
@@ -26,6 +27,8 @@ from .inference import ModelManager, ModelNotReady
 sys.path.insert(0, str(ROOT))
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+for noisy in ("httpx", "huggingface_hub", "sentence_transformers", "urllib3"):
+    logging.getLogger(noisy).setLevel(logging.WARNING)
 log = logging.getLogger("gradesense")
 
 CFG = config_mod.load()
@@ -65,10 +68,21 @@ EXAMPLES = [
 ]
 
 
+def _startup():
+    # Load in one thread, in order. Importing transformers fully first matters: `datasets` checks
+    # transformers classes while hashing, and a half-imported module in another thread crashes it.
+    try:
+        import transformers
+        transformers.PreTrainedTokenizerBase  # noqa: B018 - forces the lazy import to finish
+    except Exception:
+        pass
+    DATA.load()
+    MANAGER.load()
+
+
 @asynccontextmanager
 async def lifespan(app):
-    MANAGER.start_background_load()
-    DATA.start_background_load()
+    threading.Thread(target=_startup, daemon=True, name="startup-loader").start()
     yield
 
 

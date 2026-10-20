@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GradeSense - AI-Powered Answer Grading</title>
+  <meta name="description" content="GradeSense grades short answers with a fine-tuned DeBERTa-v3 transformer and explains each grade.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>
+      </svg>
+      <div>
+        <div class="brand-name">GradeSense</div>
+        <div class="brand-sub">AI-Powered Answer Grading</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#/dashboard" data-route="dashboard"><i data-lucide="house"></i>Dashboard</a>
+      <a href="#/grade" data-route="grade"><i data-lucide="file-text"></i>Grade One</a>
+      <a href="#/batch" data-route="batch"><i data-lucide="files"></i>Batch Grading</a>
+      <a href="#/insights" data-route="insights"><i data-lucide="chart-column"></i>Model Insights</a>
+      <a href="#/dataset" data-route="dataset"><i data-lucide="database"></i>Dataset Explorer</a>
+      <a href="#/errors" data-route="errors"><i data-lucide="triangle-alert"></i>Error Analysis</a>
+      <a href="#/history" data-route="history"><i data-lucide="history"></i>Grading History</a>
+      <a href="#/playground" data-route="playground"><i data-lucide="flask-conical"></i>Model Playground</a>
+    </nav>
+    <div class="nav-sep"></div>
+    <div class="nav-label">Settings</div>
+    <nav class="nav">
+      <a href="#/config" data-route="config"><i data-lucide="settings"></i>Model Configuration</a>
+      <a href="#/about" data-route="about"><i data-lucide="info"></i>About</a>
+    </nav>
+    <dl class="side-info" id="side-info">
+      <dt>Model</dt><dd><span class="dot" id="side-model-dot"></span><span id="side-model">Connecting…</span></dd>
+      <dt>Dataset</dt><dd><span class="dot" id="side-data-dot"></span><span id="side-data">SciEntsBank (5-way)</span></dd>
+      <dt>Version</dt><dd id="side-version">-</dd>
+    </dl>
+    <div class="side-legal"><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a></div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menu-btn" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><i data-lucide="menu"></i></button>
+      <div class="search" role="search">
+        <i data-lucide="search"></i>
+        <label for="search-input" class="sr-only">Search questions and your grading history</label>
+        <input id="search-input" type="search" placeholder="Search dataset questions or your grading history…" autocomplete="off" aria-autocomplete="list" aria-controls="search-results">
+        <div class="search-results" id="search-results" role="listbox"></div>
+      </div>
+      <div class="profile" id="profile" hidden>
+        <div class="avatar" id="profile-initials" aria-hidden="true"></div>
+        <div class="profile-text">
+          <div class="profile-name" id="profile-name"></div>
+          <div class="profile-sub" id="profile-sub"></div>
+        </div>
+      </div>
+    </header>
+    <main id="view" class="content" tabindex="-1">
+      <div class="loading-block"><span class="spinner dark"></span>Loading GradeSense…</div>
+    </main>
+  </div>
+</div>
+<noscript><div class="content"><div class="alert error">GradeSense needs JavaScript enabled.</div></div></noscript>
+</body>
+</html>

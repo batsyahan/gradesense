@@ -1,0 +1,18 @@
+# GradeSense web server. PyTorch is installed separately (CPU build) - see Dockerfile / README.
+torch
+transformers>=4.46
+tokenizers
+sentencepiece
+protobuf
+sentence-transformers>=3.0
+spacy>=3.7,<4
+datasets
+huggingface_hub
+scikit-learn
+scipy
+pandas
+numpy
+joblib
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart

@@ -22,6 +22,8 @@ explanations. Built as a Deep Learning and NLP mini-project on the SciEntsBank d
 | `src/` | ML code: data loading, evaluation, grading engine, baseline models |
 | `scripts/build_baselines.py` | Builds the TF-IDF, BiLSTM and SBERT baseline artifacts used by the app |
 | `week1_baseline.py`, `week2_bilstm.py` | Original experiment scripts |
+| `notebooks/01_explore_and_baseline.ipynb` | Data exploration and TF-IDF baselines |
+| `notebooks/02_finetune_deberta_colab.ipynb` | DeBERTa-v3 fine-tuning and evaluation (Google Colab, T4 GPU) |
 | `results/` | Evaluation artifacts: `results.csv`, `preds_*.csv`, training history, confusion-matrix images |
 | `models/` | `deberta_5way/` (fine-tuned grader, not in git) and the small baseline models |
 | `deploy/deploy_space.py` | One-command deployment to Hugging Face Spaces |
@@ -40,6 +42,27 @@ python -m uvicorn server.main:app --port 8000 --no-access-log
 Open <http://localhost:8000>. The model loads in the background (about 10-30 seconds); the sidebar shows its status.
 
 Local settings live in `config.json` (`allow_config_edit: true` lets the Model Configuration page change server settings).
+
+## Fine-tuned model
+
+The trained DeBERTa-v3 grader (740 MB, too large for GitHub) is published on the Hugging Face Hub:
+[ahanbatsy/gradesense-deberta-5way](https://huggingface.co/ahanbatsy/gradesense-deberta-5way).
+To use it locally, download it into `models/deberta_5way/`:
+
+```powershell
+python -c "from huggingface_hub import snapshot_download; snapshot_download('ahanbatsy/gradesense-deberta-5way', local_dir='models/deberta_5way')"
+```
+
+## Results (5-way, test splits)
+
+| Model | Unseen Answers | Unseen Questions | Unseen Domains |
+|---|---|---|---|
+| TF-IDF + LR | 0.444 | 0.277 | 0.337 |
+| Siamese BiLSTM | 0.412 | 0.249 | 0.333 |
+| SBERT (no fine-tuning) + LR | 0.452 | 0.290 | 0.361 |
+| **DeBERTa-v3 (fine-tuned)** | **0.539** | **0.395** | **0.596** |
+
+Macro-F1 over five classes. Weighted-F1 for DeBERTa-v3: 0.698 / 0.547 / 0.575. Full tables are in `results/results.csv`.
 
 ## Required artifacts
 
